@@ -1,5 +1,4 @@
-// app/(auth)/sign-in/page.tsx
-"use client"; // Mark as client component for form handling
+"use client";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,10 +13,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
-// import { useAuth } from '@/hooks/useAuth'; // Import useAuth when implemented
 
 export default function SignInPage() {
-  // const { signIn } = useAuth(); // TODO: Implement auth hook logic
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);

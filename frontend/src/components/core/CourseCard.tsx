@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
-import type { Roadmap } from "@/types/roadmap";
+import type { Roadmap } from "@/components/types/roadmap";
 
 interface CourseCardProps {
   roadmap: Pick<

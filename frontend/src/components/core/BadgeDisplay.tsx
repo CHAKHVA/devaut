@@ -8,8 +8,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Award } from "lucide-react"; // Fallback icon
 
-// Assuming BadgeData type is defined in types/badge.ts or similar
-import type { BadgeData } from "@/types/badge"; // Make sure path is correct
+import type { BadgeData } from "@/components/types/badge"; // Make sure path is correct
 
 interface BadgeDisplayProps {
   badge: BadgeData;
