@@ -2,8 +2,6 @@ import os
 import sys
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config, pool
-
 from alembic import context
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -11,7 +9,7 @@ sys.path.insert(0, PROJECT_ROOT)
 
 from sqlmodel import SQLModel  # noqa: E402
 
-from app.models import quiz_models  # noqa: E402
+from app.models import quiz_models  # noqa: E402, F401
 
 try:
     from app.db.session import engine as app_engine
