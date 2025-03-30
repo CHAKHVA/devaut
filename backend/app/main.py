@@ -1,11 +1,12 @@
-# from app.api.v1.api import api_router as api_router_v1
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.v1.endpoints import quiz_endpoints
+from app.core.config import settings
+
 app = FastAPI(
-    title="Personalized Learning Platform API",
+    title="JD Quiz Generator API",
     version="0.1.0",
-    openapi_url="/api/v1/openapi.json",
     docs_url="/api/v1/docs",
     redoc_url="/api/v1/redoc",
 )
@@ -24,13 +25,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(quiz_endpoints.router, prefix=settings.API_V1_STR, tags=["Quiz App"])
 
-# Root endpoint
+
 @app.get("/")
 def read_root():
-    return {
-        "message": "Welcome to the Learning Platform API. See /api/v1/docs for documentation."
-    }
-
-
-# app.include_router(api_router_v1, prefix="/api/v1")
+    return {"message": "Welcome to the JD Quiz Generator API"}

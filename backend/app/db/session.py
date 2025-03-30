@@ -1,8 +1,11 @@
+import logging
+
 from sqlmodel import Session, create_engine
 
 from app.core.config import settings
 
-engine = create_engine(settings.DATABASE_URL, echo=False)
+logger = logging.getLogger(__name__)
+
 
 try:
     engine = create_engine(
@@ -11,17 +14,16 @@ try:
         pool_pre_ping=True,
         pool_recycle=3600,
     )
+    logger.info("Database engine and session created successfully.")
 except Exception as e:
-    print(f"Failed to create database engine: {e}")
+    logger.error(f"Error creating database engine/session: {e}")
     raise
 
 
 def get_db():
-    with Session(engine) as session:
+    with Session(engine) as db:
         try:
-            yield session
-            session.commit()
+            yield db
         except Exception as e:
-            print(f"Error during database session: {e}")
-            session.rollback()
+            logger.error(f"Error during database session: {e}")
             raise
